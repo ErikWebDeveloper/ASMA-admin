@@ -75,9 +75,9 @@ class SubscripcioModel {
 
         // Devolver los resultados
         if(empty($resultados)) {
-            return null;
+            $this->enviarRespuestaJSON([]);
         }else{
-            return $resultados;
+            $this->enviarRespuestaJSON($resultados);
         }
     }
     
