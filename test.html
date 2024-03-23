@@ -13,9 +13,25 @@
         border-radius: 8px;
         margin-bottom: 20px;
     }
+
+    .search-container {
+        max-width: 600px;
+        margin: 50px auto;
+    }
 </style>
 </head>
 <body>
+
+<div class="container">
+    <div class="search-container">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Buscar..." aria-label="Buscar" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+                <button class="btn btn-primary" type="button">Buscar</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="container mt-5">
     <h1 class="mb-4">Usuarios</h1>
@@ -32,10 +48,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
         data.forEach(user => {
             const card = `
-            <div class="card mb-3">
+            <div class="card mb-3" id=${user.subscripcio.correu}>
                 <div class="card-body">
                     <h5 class="card-title">${user._id.$oid}</h5>
                     <p class="card-text">${user.subscripcio.correu}</p>
+                    <p class="card-text">${user.subscripcio.tarifa}</p>
                 </div>
             </div>`;
             userContainer.innerHTML += card;
