@@ -34,8 +34,8 @@ document.addEventListener('DOMContentLoaded', function () {
             const card = `
             <div class="card mb-3">
                 <div class="card-body">
-                    <h5 class="card-title">${user.name}</h5>
-                    <p class="card-text">${user.email}</p>
+                    <h5 class="card-title">${user._id}</h5>
+                    <p class="card-text">${user.subscripcio.correu}</p>
                 </div>
             </div>`;
             userContainer.innerHTML += card;
