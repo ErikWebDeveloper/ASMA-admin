@@ -61,6 +61,24 @@ class SubscripcioModel {
         }
     }
 
+    public function get() {
+        try {
+            $consulta = new MongoDB\Driver\Query([]);
+            $cursor = $this->conexion->executeQuery("{$this->baseDatos}.{$this->coleccion}", $consulta);
+            $documentos = [];
+
+            foreach ($cursor as $documento) {
+                $documentos[] = $documento;
+            }
+
+            $this->enviarRespuestaJSON($documentos);
+
+        } catch (MongoDB\Driver\Exception\Exception $e) {
+            //$this->enviarRespuestaJSON(['error' => true, 'mensaje' => "Error al consultar documentos: " . $e->getMessage()]);
+            $this->enviarRespuestaJSON($e->getMessage());
+        }
+    }
+
     public function find($id){
         $conversion = ["_id" => new MongoDB\BSON\ObjectId($id)];
         // Crear query
@@ -82,24 +100,6 @@ class SubscripcioModel {
         }
     }
     
-    public function getAllUsers() {
-        try {
-            $consulta = new MongoDB\Driver\Query([]);
-            $cursor = $this->conexion->executeQuery("{$this->baseDatos}.{$this->coleccion}", $consulta);
-            $documentos = [];
-
-            foreach ($cursor as $documento) {
-                $documentos[] = $documento;
-            }
-
-            $this->enviarRespuestaJSON($documentos);
-
-        } catch (MongoDB\Driver\Exception\Exception $e) {
-            //$this->enviarRespuestaJSON(['error' => true, 'mensaje' => "Error al consultar documentos: " . $e->getMessage()]);
-            $this->enviarRespuestaJSON($e->getMessage());
-        }
-    }
-
     public function delete($id){
         // Filtro para encontrar el documento por su ID
         $filtro = ['_id' => new MongoDB\BSON\ObjectId($id)];
