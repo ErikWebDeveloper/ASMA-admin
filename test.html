@@ -17,7 +17,9 @@
     .search-container {
         max-width: 600px;
         margin: 50px auto;
+        border-radius: 50px;
     }
+
 </style>
 </head>
 <body>
@@ -26,11 +28,11 @@
     <div class="search-container">
         <div class="input-group">
             <input type="text" class="form-control" placeholder="Buscar..." aria-label="Buscar" aria-describedby="basic-addon2" list="correus_subscripcions">
-            <div class="input-group-append">
-                <button class="btn btn-primary" type="button">Buscar</button>
-            </div>
             <datalist id="correus_subscripcions">
-
+                <option value=${user.subscripcio.correu}>aewsdrfw</option>
+                <option value=${user.subscripcio.correu}>wew</option>
+                <option value=${user.subscripcio.correu}>wef</option>
+                <option value=${user.subscripcio.correu}>wef</option>
             </datalist>
         </div>
     </div>
@@ -51,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         data.forEach(user => {
             const dataList = document.getElementById('correus_subscripcions');
-            dataList.innerHTML += `<a href="#${user.subscripcio.correu}"><option value=${user.subscripcio.correu}></a>`;
+            dataList.innerHTML += `<option value=${user.subscripcio.correu}>`;
 
             const card = `
             <div class="card mb-3" id=${user.subscripcio.correu}>
@@ -74,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function () {
             <div class="card-skeleton"></div>`;
 
         // Realizar la petición Fetch
-        fetch('/index.php')
+        fetch('/api.php')
             .then(response => response.json())
             .then(data => {
                 console.log(data)
