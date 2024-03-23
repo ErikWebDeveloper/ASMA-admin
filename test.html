@@ -54,6 +54,7 @@ document.addEventListener('DOMContentLoaded', function () {
         fetch('/index.php')
             .then(response => response.json())
             .then(data => {
+                console.log(data)
                 // Renderizar los datos recibidos
                 renderUserData(data);
             })
