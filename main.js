@@ -47,3 +47,7 @@ class ApiInterface {
 
     }
 }
+
+function renderDetails(){
+
+}

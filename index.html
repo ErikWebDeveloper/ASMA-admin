@@ -21,6 +21,24 @@
             color: white;
             transition: background-color 0.5s, color .5s;
         }
+        .imagen-usuario {
+            width: 100px;
+            height: 100px;
+            border: 2px solid #ffffff70;
+            background-color: #ffffff;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .imagen-usuario img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Ajusta la imagen para cubrir completamente el contenedor redondo */
+        }
+        .details-body{
+            text-align: center;
+        }
 
 
     </style>
@@ -45,8 +63,68 @@
         <h1 class="mb-4">Subscripciones</h1>
         <hr>
         <div id="userContainer" style="max-height: 80vh; overflow: scroll;">
+            <div class="card mb-3" id=${user.subscripcio.correu} data-bs-toggle="modal" data-bs-target="#detailsModal">
+                <div class="card-body">
+                    <h5 class="card-title">${user._id.$oid}</h5>
+                    <p class="card-text">${user.subscripcio.correu}</p>
+                    <p class="card-text">${enabled} ${user.subscripcio.tarifa}</p>
+                </div>
+            </div>
         </div>
         
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="detailsModal" tabindex="-1" aria-labelledby="detailsLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="detailsLabel">Subscripcion</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="m-auto p-3">
+              <div class="imagen-usuario">
+                  <img src="192.168.50.225/favicon.ico" alt="">
+              </div>
+          </div>
+          <div class="modal-body d-flex flex-wrap gap-5 justify-content-center align-items-center details-body">
+                <div>
+                    <h6>Identificador</h6>
+                    <p>3543543584wdew84</p>
+                </div>
+                <div>
+                    <h6>Correo electronico</h6>
+                    <p>erikfirmino@gmail.com</p>
+                </div>
+                <div>
+                    <h6>Tarifa</h6>
+                    <p>Profesional</p>
+                </div>
+                <div>
+                    <h6>Numero de telefono</h6>
+                    <p>123213</p>
+                </div>
+                <div>
+                    <h6>Pago</h6>
+                    <p>🔴</p>
+                </div>
+                <div>
+                    <h6>Fecha solicitud</h6>
+                    <p>15/02/2004</p>
+                </div>
+                <div>
+                    <h6>Fecha alta</h6>
+                    <p>15/02/2004</p>
+                </div>
+            </div>
+            <div aria-label="detailsButons" class="m-auto p-3">
+              <button type="button" class="btn btn-primary">Credencial</button>
+              <button type="button" class="btn btn-success">Actualizar Pago</button>
+              <button type="button" class="btn btn-danger">Eliminar</button>
+            </div>
+        </div>
+      </div>
     </div>
 
     <!-- scripts de Bootstrap -->
