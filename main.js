@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 <div class="card-skeleton"></div>`;
 
     // Realizar la petición Fetch
-    fetch("/api.php?nombre=paco")
+    fetch("/api.php?method=getAllUsers&params=")
       .then((response) => response.json())
       .then((data) => {
         console.log(data);

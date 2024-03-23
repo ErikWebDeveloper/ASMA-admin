@@ -79,7 +79,7 @@ class SubscripcioModel {
         }
     }
     
-    public function mostrarDocumentos() {
+    public function getAllUsers() {
         try {
             $consulta = new MongoDB\Driver\Query([]);
             $cursor = $this->conexion->executeQuery("{$this->baseDatos}.{$this->coleccion}", $consulta);
