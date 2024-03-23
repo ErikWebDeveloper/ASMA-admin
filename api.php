@@ -19,7 +19,7 @@ class SubscripcioModel {
         if (isset($_GET) && !empty($_GET)) {
             // Si existe el metodo
             if(method_exists($this, $_GET['method'])){
-                $this->{$_GET['method']}($_GET['params'])
+                $this->{$_GET['method']}($_GET['params']);
             }
         } else {
             // Retorna un arreglo vacío si no hay parámetros
