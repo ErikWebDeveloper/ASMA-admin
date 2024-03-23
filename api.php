@@ -100,6 +100,26 @@ class SubscripcioModel {
         }
     }
 
+    public function delete($id){
+        // Filtro para encontrar el documento por su ID
+        $filtro = ['_id' => new MongoDB\BSON\ObjectId($id)];
+
+        // Opciones para la operación de eliminación (opcional)
+        $opciones = [];
+
+        // Crear una nueva operación de eliminación
+        $operacionEliminacion = new MongoDB\Driver\BulkWrite();
+        $operacionEliminacion->delete($filtro, $opciones);
+
+        // Ejecutar la operación de eliminación
+        try {
+            $resultados = $manager->executeBulkWrite("$baseDatos.$coleccion", $operacionEliminacion);
+            $this->enviarRespuestaJSON(["state" => "Ok"]);
+        } catch (MongoDB\Driver\Exception\Exception $e) {
+            $this->enviarRespuestaJSON(["state" => "Error"]);
+        }
+    }
+
     private function enviarRespuestaJSON($respuesta) {
         header('Content-Type: application/json');
         echo json_encode($respuesta);
