@@ -61,8 +61,8 @@ class SubscripcioModel {
         }
     }
 
-    public function find($itemArray){
-        $conversion = [$itemArray[0] => new MongoDB\BSON\ObjectId($itemArray[1])];
+    public function find($id){
+        $conversion = ["_id" => new MongoDB\BSON\ObjectId($id)];
         // Crear query
         $query = new MongoDB\Driver\Query($conversion);
         // Ejecutar la consulta
