@@ -47,6 +47,10 @@ class ApiInterface {
     renderDetails(data){
         this.details.render(data);
     }
+
+    listener(elemntId){
+        document.getElementById(elemntId).addEventListener('click', (e) => {this.renderDetails(e)})
+    }
 }
 
 class DetailsInterface{
@@ -67,6 +71,3 @@ class DetailsInterface{
     
 }
 
-function renderDetails(){
-
-}
