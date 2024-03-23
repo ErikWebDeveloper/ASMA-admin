@@ -46,6 +46,7 @@ class ApiInterface {
     }
 
     renderDetails(data){
+        alert("Hi")
         this.details.render(data);
     }
 
