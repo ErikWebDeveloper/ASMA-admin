@@ -33,7 +33,7 @@ class ApiInterface {
             dataList.innerHTML += `<option value=${user.subscripcio.correu}>`;
             var enabled = user.subscripcio.operatiu ? "🟢" : "🔴";
             const card = `
-                <div class="card mb-3" id=${user.subscripcio.correu} data-bs-toggle="modal" data-bs-target="#detailsModal" onclick="${this.renderDetails.bind(this)}">
+                <div class="card mb-3" id=${user.subscripcio.correu} data-bs-toggle="modal" data-bs-target="#detailsModal">
                     <div class="card-body">
                         <h5 class="card-title">${user._id.$oid}</h5>
                         <p class="card-text">${user.subscripcio.correu}</p>
@@ -41,6 +41,7 @@ class ApiInterface {
                     </div>
                 </div>`;
             this.userContainer.innerHTML += card;
+            this.listener(user.subscripcio.correu);
         });
     }
 
