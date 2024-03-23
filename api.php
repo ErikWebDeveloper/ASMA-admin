@@ -17,8 +17,10 @@ class SubscripcioModel {
     public function readParams() {
         // Verifica si hay parámetros en la URL
         if (isset($_GET) && !empty($_GET)) {
-            // Retorna los parámetros de la URL
-            $this->enviarRespuestaJSON($_GET);
+            // Si existe el metodo
+            if(method_exists($this, $_GET['method'])){
+                $this->{$_GET['method']}($_GET['params'])
+            }
         } else {
             // Retorna un arreglo vacío si no hay parámetros
             this->enviarRespuestaJSON([]);
