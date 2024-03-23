@@ -1,4 +1,4 @@
-/*document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function () {
   const userContainer = document.getElementById("userContainer");
 
   // Función para renderizar los datos de usuario en tarjetas
@@ -44,4 +44,4 @@
 
   // Llamar a la función para obtener los usuarios al cargar la página
   getUsers();
-});*/
+});
