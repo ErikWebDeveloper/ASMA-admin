@@ -8,13 +8,13 @@ document.addEventListener("DOMContentLoaded", function () {
     data.forEach((user) => {
       const dataList = document.getElementById("correus_subscripcions");
       dataList.innerHTML += `<option value=${user.subscripcio.correu}>`;
-
+      var enabled = user.subscripcio.operatiu ? "🟢" : "🔴";
       const card = `
                 <div class="card mb-3" id=${user.subscripcio.correu}>
                     <div class="card-body">
                         <h5 class="card-title">${user._id.$oid}</h5>
                         <p class="card-text">${user.subscripcio.correu}</p>
-                        <p class="card-text">${user.subscripcio.tarifa}</p>
+                        <p class="card-text">${enabled} ${user.subscripcio.tarifa}</p>
                     </div>
                 </div>`;
       userContainer.innerHTML += card;
