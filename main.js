@@ -48,6 +48,13 @@ class ApiInterface {
     }
 }
 
+class DetailsInterface{
+    constructor(){
+        
+    }
+    render(){}
+}
+
 function renderDetails(){
 
 }
