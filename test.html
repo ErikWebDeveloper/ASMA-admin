@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         data.forEach(user => {
             const dataList = document.getElementById('correus_subscripcions');
-            dataList.innerHTML += `<option value=${user.subscripcio.correu}>`;
+            dataList.innerHTML += `<a href="#${user.subscripcio.correu}"><option value=${user.subscripcio.correu}></a>`;
 
             const card = `
             <div class="card mb-3" id=${user.subscripcio.correu}>
