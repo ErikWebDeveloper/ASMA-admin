@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
 class ApiInterface {
     constructor() {
       this.userContainer = document.getElementById("userContainer");
+      this.details = new DetailsInterface();
     }
 
     send(request) {
@@ -32,7 +33,7 @@ class ApiInterface {
             dataList.innerHTML += `<option value=${user.subscripcio.correu}>`;
             var enabled = user.subscripcio.operatiu ? "🟢" : "🔴";
             const card = `
-                <div class="card mb-3" id=${user.subscripcio.correu} data-bs-toggle="modal" data-bs-target="#detailsModal">
+                <div class="card mb-3" id=${user.subscripcio.correu} data-bs-toggle="modal" data-bs-target="#detailsModal" onclick="${this.renderDetails.bind(this)}">
                     <div class="card-body">
                         <h5 class="card-title">${user._id.$oid}</h5>
                         <p class="card-text">${user.subscripcio.correu}</p>
@@ -43,16 +44,27 @@ class ApiInterface {
         });
     }
 
-    renderDetails(){
-
+    renderDetails(data){
+        this.details.render(data);
     }
 }
 
 class DetailsInterface{
     constructor(){
-        
+        this.img = document.getElementById("d-img");
+        this.id = document.getElementById("d-id");
+        this.email = document.getElementById("d-email");
+        this.tarifa = document.getElementById("d-tarifa");
+        this.num = document.getElementById("d-num");
+        this.pago = document.getElementById("d-pago");
+        this.up = document.getElementById("d-up");
+        this.inner = document.getElementById("d-inner");
+
     }
-    render(){}
+    render(data){
+        console.log(data)
+    }
+    
 }
 
 function renderDetails(){
