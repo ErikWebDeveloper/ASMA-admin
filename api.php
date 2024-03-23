@@ -108,12 +108,12 @@ class SubscripcioModel {
         $opciones = [];
 
         // Crear una nueva operación de eliminación
-        $operacionEliminacion = new MongoDB\Driver\BulkWrite();
-        $operacionEliminacion->delete($filtro, $opciones);
+        $bulk  = new MongoDB\Driver\BulkWrite();
+        $bulk ->delete($filtro, $opciones);
 
         // Ejecutar la operación de eliminación
         try {
-            $resultados = $manager->executeBulkWrite("$baseDatos.$coleccion", $operacionEliminacion);
+            $resultados = $this->conexion->executeBulkWrite("{$this->baseDatos}.{$this->coleccion}", $bulk);
             $this->enviarRespuestaJSON(["state" => "Ok"]);
         } catch (MongoDB\Driver\Exception\Exception $e) {
             $this->enviarRespuestaJSON(["state" => "Error"]);
