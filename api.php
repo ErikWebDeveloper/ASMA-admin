@@ -11,6 +11,18 @@ class SubscripcioModel {
 
     public function __construct() {
         $this->conectar();
+        $this->readParams();
+    }
+
+    public function readParams() {
+        // Verifica si hay parámetros en la URL
+        if (isset($_GET) && !empty($_GET)) {
+            // Retorna los parámetros de la URL
+            $this->enviarRespuestaJSON($_GET);
+        } else {
+            // Retorna un arreglo vacío si no hay parámetros
+            this->enviarRespuestaJSON([]);
+        }
     }
 
     private function conectar() {
@@ -92,4 +104,4 @@ class SubscripcioModel {
 }
 
 $api = new SubscripcioModel();
-$api->mostrarDocumentos();
+//$api->mostrarDocumentos();

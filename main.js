@@ -30,12 +30,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 <div class="card-skeleton"></div>`;
 
     // Realizar la petición Fetch
-    fetch("/api.php")
+    fetch("/api.php?nombre=paco")
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
         // Renderizar los datos recibidos
-        renderUserData(data);
+        //renderUserData(data);
       })
       .catch((error) => {
         console.error("Error al obtener los usuarios:", error);
