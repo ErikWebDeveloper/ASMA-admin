@@ -17,7 +17,7 @@ class ApiInterface {
       .then((response) => response.json())
       .then((data) => {
         // Debug
-        console.log(data);
+        //console.log(data);
         // Guardar datos
         this.data = data;
         // Renderizar los datos recibidos
@@ -80,7 +80,12 @@ class DetailsInterface{
     }
 
     render(data){
-        console.log(data);
+        //console.log(data);
+        console.log(data.usuaris.length > 1);
+        let imgSrc = null;
+        if(data.usuaris.length > 1) imgSrc = `${data.grup.foto}`;
+        else imgSrc = `${data.usuaris[0].foto}`;
+        this.img.src = imgSrc;
         this.id.innerText = `${data._id.$oid}`;
         this.email.innerText = `${data.subscripcio.correu}`;
         this.tarifa.innerText = `${data.subscripcio.tarifa}`;
