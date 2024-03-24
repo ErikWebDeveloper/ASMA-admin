@@ -42,7 +42,7 @@ class ApiInterface {
                 </div>`;
       this.userContainer.innerHTML += card;
     });
-    this.addListeners();
+    this.addListeners(data);
   }
 
   renderDetails(data) {
@@ -50,7 +50,7 @@ class ApiInterface {
     this.details.render(data);
   }
 
-  addListeners() {
+  addListeners(data) {
     data.forEach((user) => {
         const elemntId = user.subscripcio.correu;
         document.getElementById(elemntId).addEventListener("click", (e) => {
