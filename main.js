@@ -80,22 +80,13 @@ class DetailsInterface{
     }
 
     render(data){
-        //console.log(data);
-        if (typeof data === "object" && data !== null) {
-          for (let key in data) {
-            if (data.hasOwnProperty(key)) {
-              const user = data[key];
-              this.id.innerText = `${user._id.$oid}`;
-              this.email = `${user.subscripcio.correu}`;
-              this.tarifa = `${user.subscripcio.tarifa}`;
-              this.num = `${user.subscripcio.telefon}`;
-              this.pago = `${user.subscripcio.operatiu}`;
-              this.up = `${user.subscripcio.data_alta}`;
-            }
-          }
-        } else {
-          console.error('El parámetro "data" no es un objeto válido.');
-        }
+        console.log(data);
+        this.id.innerText = `${data._id.$oid}`;
+        this.email.innerText = `${data.subscripcio.correu}`;
+        this.tarifa.innerText = `${data.subscripcio.tarifa}`;
+        this.num.innerText = `${data.subscripcio.telefon}`;
+        this.pago.innerText = `${data.subscripcio.operatiu}`;
+        this.up.innerText = `${data.subscripcio.data_alta}`;
     }
     
 }
