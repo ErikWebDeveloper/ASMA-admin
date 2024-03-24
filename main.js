@@ -83,8 +83,8 @@ class DetailsInterface{
     render(data){
         console.log(data);
         console.log(data.usuaris.length > 1);
-        console.log(data.grup.foto);
-        console.log(data.usuaris[0].foto);
+        console.log("Foto Grup -> " + data.grup.foto);
+        console.log("Foto Usuari -> " + data.usuaris[0].foto);
         let imgSrc = null;
         if(data.usuaris.length > 1) imgSrc = `${data.grup.foto}`;
         else imgSrc = `${data.usuaris[0].foto}`;
