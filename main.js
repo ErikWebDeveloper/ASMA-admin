@@ -79,7 +79,16 @@ class DetailsInterface{
 
     }
     render(data){
-        console.log(data)
+        data.forEach((user) => {
+            //this.img = document.getElementById("d-img");
+            this.id.innerText = `${user._id.$oid}`;
+            this.email = `${user.subscripcio.correu}`;
+            this.tarifa = `${user.subscripcio.tarifa}`;
+            this.num = `${user.subscripcio.telefon}`;
+            this.pago = `${user.subscripcio.operatiu}`;
+            this.up = `${data_alta}`;
+            //this.inner = `${user.subscripcio.}`;
+        })
     }
     
 }
