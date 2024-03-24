@@ -16,7 +16,10 @@ class ApiInterface {
     fetch(`/api.php?${params}`)
       .then((response) => response.json())
       .then((data) => {
+        // Debug
         console.log(data);
+        // Guardar datos
+        this.data = data;
         // Renderizar los datos recibidos
         this.renderUserData(data);
       })
@@ -28,12 +31,13 @@ class ApiInterface {
   // Función para renderizar los datos de usuario en tarjetas
   renderUserData(data) {
     this.userContainer.innerHTML = ""; // Limpiar el contenedor
+    let count = 0;
     data.forEach((user) => {
       const dataList = document.getElementById("correus_subscripcions");
       dataList.innerHTML += `<option value=${user.subscripcio.correu}>`;
       var enabled = user.subscripcio.operatiu ? "🟢" : "🔴";
       const card = `
-                <div class="card mb-3" id=${user.subscripcio.correu} data-bs-toggle="modal" data-bs-target="#detailsModal">
+                <div class="card mb-3" id="item-${count}" data-bs-toggle="modal" data-bs-target="#detailsModal">
                     <div class="card-body">
                         <h5 class="card-title">${user._id.$oid}</h5>
                         <p class="card-text">${user.subscripcio.correu}</p>
@@ -41,27 +45,23 @@ class ApiInterface {
                     </div>
                 </div>`;
       this.userContainer.innerHTML += card;
+      count++;
     });
     this.addListeners(data);
   }
 
   renderDetails(data) {
-    alert("Hi");
     this.details.render(data);
   }
 
   addListeners(data) {
+    let count = 0;
     data.forEach((user) => {
         const elemntId = user.subscripcio.correu;
-        document.getElementById(elemntId).addEventListener("click", (e) => {
+        document.getElementById(`item-${count}`).addEventListener("click", (e) => {
             this.renderDetails(user);
         });
-    });
-  }
-
-  listener(elemntId) {
-    document.getElementById(elemntId).addEventListener("click", (e) => {
-      this.renderDetails(e);
+        count++;
     });
   }
 }
