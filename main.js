@@ -17,7 +17,7 @@ class ApiInterface {
       .then((response) => response.json())
       .then((data) => {
         // Debug
-        //console.log(data);
+        console.log(data);
         // Guardar datos
         this.data = data;
         // Renderizar los datos recibidos
