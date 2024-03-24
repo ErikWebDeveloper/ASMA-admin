@@ -51,7 +51,7 @@ class ApiInterface {
     }
 
     listener(elemntId){
-        document.getElementById(elemntId).addEventListener('click', (e) => this.renderDetails(e))
+        document.getElementById(elemntId).addEventListener('click', (e) => {this.renderDetails(e)})
     }
 }
 
