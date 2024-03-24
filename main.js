@@ -68,6 +68,7 @@ class ApiInterface {
 
 class DetailsInterface{
     constructor(){
+        this.url = 'https://musicsandorra.com/AppData/img/usuaris/';
         this.img = document.getElementById("d-img");
         this.id = document.getElementById("d-id");
         this.email = document.getElementById("d-email");
@@ -85,7 +86,7 @@ class DetailsInterface{
         let imgSrc = null;
         if(data.usuaris.length > 1) imgSrc = `${data.grup.foto}`;
         else imgSrc = `${data.usuaris[0].foto}`;
-        this.img.src = imgSrc;
+        this.img.src = this.url + imgSrc;
         this.id.innerText = `${data._id.$oid}`;
         this.email.innerText = `${data.subscripcio.correu}`;
         this.tarifa.innerText = `${data.subscripcio.tarifa}`;
