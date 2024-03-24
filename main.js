@@ -78,18 +78,24 @@ class DetailsInterface{
         this.inner = document.getElementById("d-inner");
 
     }
+
     render(data){
-        console.log(data);
-        /*data.forEach((user) => {
-            //this.img = document.getElementById("d-img");
-            this.id.innerText = `${user._id.$oid}`;
-            this.email = `${user.subscripcio.correu}`;
-            this.tarifa = `${user.subscripcio.tarifa}`;
-            this.num = `${user.subscripcio.telefon}`;
-            this.pago = `${user.subscripcio.operatiu}`;
-            this.up = `${data_alta}`;
-            //this.inner = `${user.subscripcio.}`;
-        })*/
+        //console.log(data);
+        if (typeof data === "object" && data !== null) {
+          for (let key in data) {
+            if (data.hasOwnProperty(key)) {
+              const user = data[key];
+              this.id.innerText = `${user._id.$oid}`;
+              this.email = `${user.subscripcio.correu}`;
+              this.tarifa = `${user.subscripcio.tarifa}`;
+              this.num = `${user.subscripcio.telefon}`;
+              this.pago = `${user.subscripcio.operatiu}`;
+              this.up = `${user.subscripcio.data_alta}`;
+            }
+          }
+        } else {
+          console.error('El parámetro "data" no es un objeto válido.');
+        }
     }
     
 }
