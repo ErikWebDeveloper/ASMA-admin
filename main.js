@@ -93,7 +93,7 @@ class DetailsInterface{
         this.email.innerText = `${data.subscripcio.correu}`;
         this.tarifa.innerText = `${data.subscripcio.tarifa}`;
         this.num.innerText = `${data.subscripcio.telefon}`;
-        this.pago.innerText = `${data.subscripcio.operatiu}`;
+        this.pago.innerText = data.subscripcio.operatiu ? "🟢" : "🔴";
         this.up.innerText = `${data.subscripcio.data_alta}`;
     }
     
